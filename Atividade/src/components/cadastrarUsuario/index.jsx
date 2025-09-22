@@ -1,56 +1,64 @@
-const FormularioCadastro = ({ jogadores, onAdicionarJogador })=> {
-  const [nome, setNome] = React.useState('');
-  const [numeroCamisa, setNumeroCamisa] = React.useState('');
+import React, { useState } from 'react';
+import './style.css';
 
-  const adicionarJogador = ()=> {
-    if (nome.trim() === '' || numeroCamisa.trim() === '') {
-      alert('Por favor, preencha todos os campos!');
-      return;
-    }
+function FormularioCadastro({ onSubmit }) {
+  const [nome, setNome] = useState('');
+  const [idade, setIdade] = useState('');
+  const [time, setTime] = useState('');
+  const [posicao, setPosicao] = useState('');
 
-    const numeroExistente = jogadores.some(jogador=> jogador.numero === parseInt(numeroCamisa));
-    if (numeroExistente) {
-      alert('Este número de camisa já está em uso');
-      alert('Tente outro número');
-      return;
-    }
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
     const novoJogador = {
-      id: Date.now(),
-      nome: nome.trim(),
-      numero: parseInt(numeroCamisa)
+      nome,
+      idade: Number(idade),
+      time,
+      posicao
     };
-
-    onAdicionarJogador(novoJogador);
+    
+    onSubmit(novoJogador);
+    
+    // Limpar campos
     setNome('');
-    setNumeroCamisa('');
-  };
+    setIdade('');
+    setTime('');
+    setPosicao('');
+  }
+
   return (
-    <div className="form-cadastro">
-      <h2 className="form-titulo">Cadastrar novo jogador</h2>
-      <div className="form-group">
-        <div className="label">Nome do jogador</div>
-        <input
-          type="text"
-          className="input" value={nome}
-          onChange={(e)=> setNome(e.target.value)}
-          placeholder="Digite o nome do jogador"
-        />
-      </div>
-      <div className="form-group">
-        <div className="label">Número da camisa</div>
-        <input
-          type="number"
-          className="input" value={numeroCamisa}
-          onChange={(e)=> setNumeroCamisa(e.target.value)}
-          placeholder="Digite o número da camisa"
-          min="0"
-          max="999"
-        />
-      </div>
-      <button onClick={adicionarJogador} className="btn-primary">
-        Cadastrar Jogador no time
-      </button>
-    </div>
+    <form onSubmit={handleSubmit} className="form-container">
+      <input
+        type="text"
+        placeholder="Nome do Jogador"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
+        required
+      />
+      <input
+        type="number"
+        placeholder="Idade"
+        value={idade}
+        onChange={(e) => setIdade(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Time"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Posição"
+        value={posicao}
+        onChange={(e) => setPosicao(e.target.value)}
+        required
+      />
+      <button type="submit">Cadastrar</button>
+    </form>
   );
-};
+}
+
+export default FormularioCadastro;

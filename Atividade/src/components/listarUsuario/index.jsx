@@ -34,3 +34,5 @@ const ListaJogadores = ({ jogadores, onRemoverJogador }) => {
     </div>
   );
 };
+
+export default ListaJogadores;
