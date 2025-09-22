@@ -1,0 +1,177 @@
+.lista-jogadores {
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.1);
+  border: 1px solid #e9d5ff;
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lista-titulo {
+  color: #6b21a8;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9d5ff;
+}
+
+.contador-jogadores {
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #7e22ce;
+}
+
+.empty-state p:first-child {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #6b21a8;
+}
+
+.empty-state p:last-child {
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.players-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.player-item {
+  background: white;
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 2px solid #e9d5ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(147, 51, 234, 0.05);
+}
+
+.player-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.15);
+  border-color: #c084fc;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player-number {
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(147, 51, 234, 0.3);
+}
+
+.player-name {
+  color: #581c87;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #fda4af 0%, #fb7185 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(251, 113, 133, 0.3);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(251, 113, 133, 0.4);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(251, 113, 133, 0.3);
+}
+
+.player-item.removing {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+  .lista-jogadores {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .lista-titulo {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .player-item {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .player-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.player-item {
+  animation: fadeIn 0.3s ease;
+}
+
+.empty-state {
+  animation: fadeIn 0.5s ease;
+}
